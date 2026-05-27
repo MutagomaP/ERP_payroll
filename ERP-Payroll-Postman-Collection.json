@@ -1,0 +1,189 @@
+{
+  "info": {
+    "name": "ERP Payroll Management System",
+    "description": "Complete API collection for testing ERP Payroll System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register Admin",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"ADM001\",\n  \"firstName\": \"Admin\",\n  \"lastName\": \"User\",\n  \"email\": \"admin@gov.rw\",\n  \"password\": \"admin123\",\n  \"roles\": \"ROLE_ADMIN\",\n  \"mobile\": \"+250788111111\",\n  \"dateOfBirth\": \"1985-01-01\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/auth/register"}
+          }
+        },
+        {
+          "name": "Register Manager",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"MGR001\",\n  \"firstName\": \"Manager\",\n  \"lastName\": \"User\",\n  \"email\": \"manager@gov.rw\",\n  \"password\": \"manager123\",\n  \"roles\": \"ROLE_MANAGER\",\n  \"mobile\": \"+250788222222\",\n  \"dateOfBirth\": \"1988-05-15\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/auth/register"}
+          }
+        },
+        {
+          "name": "Register Employee - Mugabo",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"EMP123\",\n  \"firstName\": \"Mugabo\",\n  \"lastName\": \"Peter\",\n  \"email\": \"mugabo@gov.rw\",\n  \"password\": \"emp123\",\n  \"roles\": \"ROLE_EMPLOYEE\",\n  \"mobile\": \"+250788333333\",\n  \"dateOfBirth\": \"1992-03-20\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/auth/register"}
+          }
+        },
+        {
+          "name": "Register Employee - Iratire",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"EMP224\",\n  \"firstName\": \"Iratire\",\n  \"lastName\": \"Jean\",\n  \"email\": \"iratire@gov.rw\",\n  \"password\": \"emp224\",\n  \"roles\": \"ROLE_EMPLOYEE\",\n  \"mobile\": \"+250788444444\",\n  \"dateOfBirth\": \"1995-07-10\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/auth/register"}
+          }
+        },
+        {
+          "name": "Login as Admin",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@gov.rw\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/auth/login"}
+          }
+        },
+        {
+          "name": "Login as Manager",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"manager@gov.rw\",\n  \"password\": \"manager123\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/auth/login"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Employment Management",
+      "item": [
+        {
+          "name": "Create Employment - Mugabo (70,000)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"EMP-123-2025\",\n  \"employeeId\": 3,\n  \"department\": \"Finance\",\n  \"position\": \"Accountant\",\n  \"baseSalary\": 70000,\n  \"joiningDate\": \"2024-01-01\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/employments"}
+          }
+        },
+        {
+          "name": "Create Employment - Iratire (35,000)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"EMP-224-2025\",\n  \"employeeId\": 4,\n  \"department\": \"HR\",\n  \"position\": \"HR Assistant\",\n  \"baseSalary\": 35000,\n  \"joiningDate\": \"2024-06-01\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/employments"}
+          }
+        },
+        {
+          "name": "Get All Employments",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:8080/api/employments"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payroll Management",
+      "item": [
+        {
+          "name": "Generate Payroll (June 2025)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"month\": 6,\n  \"year\": 2025\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/payroll/generate"}
+          }
+        },
+        {
+          "name": "Get All Payrolls",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:8080/api/payroll"}
+          }
+        },
+        {
+          "name": "Get Payroll by Month/Year",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:8080/api/payroll/month/6/year/2025"}
+          }
+        },
+        {
+          "name": "Approve Payroll (ID: 1)",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:8080/api/payroll/1/approve"}
+          }
+        },
+        {
+          "name": "Get My Payslips",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:8080/api/payroll/my-payslips"}
+          }
+        },
+        {
+          "name": "Get All Messages",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:8080/api/payroll/messages"}
+          }
+        }
+      ]
+    }
+  ]
+}

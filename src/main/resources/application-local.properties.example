@@ -1,0 +1,8 @@
+# Copy to application-local.properties (same folder) and fill in your Gmail App Password.
+# Spring Boot loads application-local.properties automatically if present.
+# Do not commit application-local.properties to git.
+
+app.mail.enabled=true
+app.mail.from=your-email@gmail.com
+spring.mail.username=your-email@gmail.com
+spring.mail.password=xxxx-xxxx-xxxx-xxxx
