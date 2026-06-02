@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.0</version>
+        <version>3.5.0</version>
         <relativePath/>
     </parent>
     
@@ -17,10 +17,12 @@
     <version>1.0.0</version>
     <name>ERP Payroll Management System</name>
     <description>Enterprise Resource Planning - Payroll and Employee Management</description>
-    
+
+
+
     <properties>
         <java.version>17</java.version>
-        <jwt.version>0.12.3</jwt.version>
+        <jwt.version>0.12.6</jwt.version>
     </properties>
     
     <dependencies>
@@ -29,6 +31,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+
         
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -80,7 +84,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.3.0</version>
+            <version>2.8.5</version>
         </dependency>
         
         <!-- Lombok -->

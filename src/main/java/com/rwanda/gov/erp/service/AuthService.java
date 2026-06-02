@@ -17,6 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -41,6 +43,10 @@ public class AuthService {
 
         if (ROLE_ADMIN.equals(request.getRoles()) && employeeRepository.existsByRoles(ROLE_ADMIN)) {
             throw new RuntimeException("Only one admin is allowed in the system");
+        }
+
+        if (request.getDateOfBirth() != null && !request.getDateOfBirth().isBefore(LocalDate.now())) {
+            throw new RuntimeException("Date of birth must be in the past");
         }
         
         Employee employee = new Employee();
